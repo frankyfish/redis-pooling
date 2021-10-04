@@ -1,6 +1,5 @@
 package com.example.testredis;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -11,7 +10,7 @@ import org.redisson.config.Config;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.utility.DockerImageName;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RedisIT {
     private String redisHost;
@@ -27,7 +26,7 @@ public class RedisIT {
     public void setUp() {
         redisHost = redisContainer.getHost();
         redisPort = redisContainer.getFirstMappedPort();
-        System.out.println("POrt==" + redisPort);
+
         redisConfig.useSingleServer()
                    .setAddress(String.format("redis://%s:%d", redisHost, redisPort));
     }

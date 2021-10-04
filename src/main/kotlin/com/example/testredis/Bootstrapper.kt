@@ -23,7 +23,7 @@ class Bootstrapper(@Autowired val clientIdService: ClientIdService) {
 
     @EventListener(ContextClosedEvent::class)
     fun tearDown() {
-        log.info("Returning clientId=$mqttClientId to back to pool.")
+        log.info("Returning clientId=$mqttClientId back to pool.")
         clientIdService.returnClientIdToPool(mqttClientId)
     }
 
